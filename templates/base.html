@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}ASAPP CHAT{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{#  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600,200' rel='stylesheet' type='text/css'>#}
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'raleway.css' %}">
+  <link rel="stylesheet" href="{% static 'normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'skeleton.css' %}">
+  <link rel="stylesheet" href="{% static 'chat_room.css' %}">
+</head>
+<body>
+  <div class="section">
+    <div class="container">
+      {% block menu %}{% endblock menu %}
+      {% if request.user.is_authenticated %}
+        <p class="quiet">
+            Logged in as: {{ request.user.username|upper }}
+        </p>
+      {% endif %}
+      {% block content %}{% endblock content %}
+    </div>
+  </div>  
+  {% block afterbody %}{% endblock afterbody %}
+</body>
+</html>

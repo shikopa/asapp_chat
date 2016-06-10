@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% block menu %}
+  <p class="quiet">
+     <a class="button button-primary" href="{% url 'available_chats' %}">Available Chats</a>
+     <a class="button button-primary" href="{% url 'logout' %}">Logout</a>
+   </p>
+{% endblock %}
+
+{% block content %}
+  {% load staticfiles %}
+
+  <h1> {{ username|upper }}</h1>
+  <input id="chat_room_uuid" name="chat_room_uuid" type="hidden" value="{{ chat_room.room_uuid }}">
+  <input id="pk" name="pk" type="hidden" value="{{ chat_room.pk }}">
+  <input id="sender" name="sender" type="hidden" value="{{ request.user.username }}">
+  <form id="chat_room_form">
+    <table id="chat_room_table">
+      <thead>
+        <tr>
+          <td colspan="2"><input id="message" type="text" placeholder="message" onkeyup="enableSendBtn()"></td>
+          <td >
+            <button type="submit" id="sendBtn">Send</button>
+        </td>
+      </thead>
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.formatted_created_dt }}</td>
+            <td>{{ message.sender.username }}</td>
+            <td>{{ message.message }}</td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+
+    </table>
+  </form>
+{% endblock content %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "jquery-1.12.4.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "reconnecting-websocket.js" %}'></script>
+  <script type="text/javascript" src='{% static "chat_room.js" %}'></script>
+
+{% endblock afterbody %}

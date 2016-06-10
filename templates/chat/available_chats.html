@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block menu %}
+  <p class="quiet">
+     <a class="button button-primary" href="{% url 'logout' %}">Logout</a>
+   </p>
+{% endblock %}
+
+{% block content %}
+  <h1>Available Chats</h1>
+  <table id="chat">
+    <tbody>
+      {% for user in available_users %}
+        <tr class="deck">
+          <td colspan=2> {{ user.username|upper }}</td>
+          <td>
+            <a class="button button-primary" href="{% url 'chat_room' username=user.username %}">Chat</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
