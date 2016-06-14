@@ -1,7 +1,6 @@
 import os
 import random
 import string
-# import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -57,11 +56,6 @@ TEMPLATES = (
         },
     },
 )
-
-
-# DATABASES = {
-#     'default': dj_database_url.config(default="postgres:///asapp_chat", conn_max_age=500)
-# }
 
 DATABASES = {
     'default': {
