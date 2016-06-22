@@ -1,6 +1,6 @@
-# Asapp Chat
+# Shikopa Chat
 
-Basic realtime chat service
+Basic realtime chat service using websockets.
 
 # REQUIREMENTS
 * Python 2.7

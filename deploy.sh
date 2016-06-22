@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 # Delete migrations
 if [[ -d "chat/migrations" ]]; then
-  rm -rf chat//migrations
+  rm -rf chat/migrations
 fi
 
 python manage.py makemigrations chat
